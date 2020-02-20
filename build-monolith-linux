@@ -1,7 +1,8 @@
 #!/bin/sh
 
+BASEDIR=$(pwd)
 cd out/Release/obj.target/deps/v8/gypfiles
-
 for lib in `find . -path '*.a'`;
     do ar -t $lib | xargs ar -q libv8_monolith.a;
 done;
+mv libv8_monolith.a $BASEDIR
