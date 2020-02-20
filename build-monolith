@@ -1,7 +1,4 @@
 #!/bin/sh
 
-cd out/Release/obj.target/deps/v8/gypfiles
-
-for lib in `find . -path '*.a'`;
-    do ar -t $lib | xargs ar -q libv8_monolith.a;
-done;
+if [[ "$(uname)" = "SunOS" ]]; then ./build-monolith-smartos; fi;
+if [[ "$(uname)" = "Linux" ]]; then ./build-monolith-linux; fi;
