@@ -1,4 +1,9 @@
 #!/bin/sh
 
-if [[ "$(uname)" = "SunOS" ]]; then ./build-monolith-smartos; fi;
-if [[ "$(uname)" = "Linux" ]]; then ./build-monolith-linux; fi;
+if [ "$(uname)" = "SunOS" ]; then
+  ./build-monolith-smartos
+elif [ "$(uname)" = "Linux" ]; then
+  ./build-monolith-linux
+else
+  echo "Unsupported Platform"
+fi
