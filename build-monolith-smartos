@@ -1,7 +1,0 @@
-#!/bin/sh
-
-BASEDIR=$(pwd)
-cd out/Release/obj.target
-/usr/xpg4/bin/find . -path "**/*v8*/**/*.o" | xargs ar cqs libv8_monolith.a
-/usr/xpg4/bin/find . -path "**/*icu*/**/*.o" | xargs ar cqs libv8_monolith.a
-mv libv8_monolith.a $BASEDIR

@@ -1,9 +1,19 @@
 #!/bin/sh
 
+BASEDIR=$(pwd)
+cd out/Release/obj.target
+
 if [ "$(uname)" = "SunOS" ]; then
-  ./build-monolith-smartos
+  /usr/xpg4/bin/find . -path "**/*v8*/**/*.o" | xargs ar cqs libv8_monolith.a
+  /usr/xpg4/bin/find . -path "**/*icu*/**/*.o" | xargs ar cqs libv8_monolith.a
 elif [ "$(uname)" = "Linux" ]; then
-  ./build-monolith-linux
+  cd deps/v8/gypfiles
+  for lib in `find . -path '*.a'`;
+      do ar -t $lib | xargs ar -q libv8_monolith.a;
+  done;
 else
   echo "Unsupported Platform"
+  exit
 fi
+
+mv libv8_monolith.a $BASEDIR
