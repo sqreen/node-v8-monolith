@@ -1,5 +1,3 @@
-libv8_monolith.a
-
 # Whitelist dotfiles
 .*
 !deps/**/.*
