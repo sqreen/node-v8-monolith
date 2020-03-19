@@ -1,6 +1,8 @@
 #!/bin/sh
 
 BASEDIR=$(pwd)
+BUILDTYPE=${BUILDTYPE:-Release}
+
 cd out/${BUILDTYPE}/obj.target
 
 if [ "$(uname)" = "SunOS" ]; then
